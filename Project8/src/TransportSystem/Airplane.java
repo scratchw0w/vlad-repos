@@ -1,14 +1,16 @@
 package TransportSystem;
 
-public class Airplane implements Transport{
+public class Airplane implements Transport {
+    private static final int DISTANCE_PER_MOVE = 159;
     private int destination;
 
-    public Airplane() {
-    }
-    public Airplane(int destination){
+    public Airplane(int destination) {
         this.destination = destination;
     }
-    public void move(){
-        System.out.println("Самолет пролетел " + this.destination + " километров");
+
+    @Override
+    public void move() {
+        this.destination += DISTANCE_PER_MOVE;
+        System.out.println("Самолет пролетел " + this.destination + " километров(+" + DISTANCE_PER_MOVE + "km)");
     }
 }
