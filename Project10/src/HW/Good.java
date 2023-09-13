@@ -6,9 +6,6 @@ public class Good {
     private int price;
     private int totalPrice;
 
-    public Good() {
-    }
-
     public Good(String name, int number, int price) {
         this.name = name;
         this.number = number;
@@ -44,5 +41,12 @@ public class Good {
 
     public String getName() {
         return this.name;
+    }
+
+    public void showInfo(){
+        System.out.println("Название: " + this.name);
+        System.out.println("Количество: " + this.number);
+        System.out.println("Цена за единицу: " + this.price);
+        System.out.println("Итоговая цена: " + this.totalPrice);
     }
 }
