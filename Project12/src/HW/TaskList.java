@@ -1,7 +1,9 @@
 package HW;
 
+import java.util.List;
+
 public interface TaskList {
-    public void addTask(String task);
-    public void deleteTask(int index);
-    public void getTaskList();
+    void addTask(String task);
+    void deleteTask(int index);
+    List<String> getTaskList();
 }
