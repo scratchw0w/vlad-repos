@@ -18,9 +18,7 @@ public class ShoppingList implements TaskList {
     }
 
     @Override
-    public void getTaskList() {
-        for(int i = 0; i < tasks.size(); i++){
-            System.out.println(tasks.get(i));
-        }
+    public List<String> getTaskList() {
+        return tasks;
     }
 }
