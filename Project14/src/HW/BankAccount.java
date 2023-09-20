@@ -8,7 +8,7 @@ public class BankAccount {
     }
 
     public int getBalance() {
-        return balance;
+        return this.balance;
     }
 
     public void setBalance(int balance) {

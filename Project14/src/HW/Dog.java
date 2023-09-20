@@ -1,6 +1,6 @@
 package HW;
 
-public class Dog implements Animal{
+public class Dog implements Animal {
     @Override
     public void eat() {
         System.out.println("Собака ест.");
