@@ -1,20 +1,6 @@
 package HW;
 
-public class ReverseString {
-    private String string;
-
-    public ReverseString(String string) {
-        this.string = string;
-    }
-
-    public String getString() {
-        return string;
-    }
-
-    public void setString(String string) {
-        this.string = string;
-    }
-
+public class ReverseStringService {
     public String reverseString(String string) {
         char[] charArray = string.toCharArray();
         String reversedString = "";
