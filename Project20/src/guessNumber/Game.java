@@ -4,20 +4,22 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
-    private final static int ATTMPTS_NUMBER = 10;
-    private int secretNumber;
+    private final static int ATTEMPTS_NUMBER = 10;
+    private final static int MIN_SECRET_NUM = 0;
+    private final static int MAX_SECRET_NUM = 101;
+    private final int secretNumber;
     private int attempts;
     private boolean isWinner;
 
     public Game() {
         Random randNum = new Random();
-        this.secretNumber = randNum.nextInt(0, 101);
-        this.attempts = ATTMPTS_NUMBER;
+        this.secretNumber = randNum.nextInt(MIN_SECRET_NUM, MAX_SECRET_NUM);
+        this.attempts = ATTEMPTS_NUMBER;
         this.isWinner = false;
     }
 
     private void printResult(boolean isWinner){
-        if(isWinner == true){
+        if(isWinner){
             System.out.println("Поздравляю, вы угадали число");
         }
         else{
