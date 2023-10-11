@@ -6,7 +6,6 @@ import java.util.HashMap;
 
 public class Main {
     public static void findNameByAge(Map<String, Integer> yourMap, int age) {
-        Set<Map.Entry<String, Integer>> entry = yourMap.entrySet();
         for (Map.Entry<String, Integer> currentEntry : yourMap.entrySet()) {
             if (age == currentEntry.getValue()) {
                 System.out.println(currentEntry.getKey());
@@ -17,7 +16,6 @@ public class Main {
     public static void findMaxPrice(Map<String, Integer> yourMap) {
         int max = 0;
         String theMostExpensiveGood = "";
-        Set<Map.Entry<String, Integer>> entry = yourMap.entrySet();
         for (Map.Entry<String, Integer> currentEntry : yourMap.entrySet()) {
             if (max < currentEntry.getValue()) {
                 max = currentEntry.getValue();
@@ -25,6 +23,24 @@ public class Main {
             }
         }
         yourMap.remove(theMostExpensiveGood);
+    }
+
+    public static void createMapByArray(int[] array){
+        Map<Integer, Integer> massiveMap = new HashMap<>();
+        int counter = 0;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (array[i] == array[j]) {
+                    counter += 1;
+                }
+            }
+            massiveMap.put(array[i], counter);
+            counter = 0;
+        }
+        Set<Map.Entry<Integer, Integer>> entry = massiveMap.entrySet();
+        for (Map.Entry<Integer, Integer> currentEntry : entry) {
+            System.out.print(currentEntry.getKey() + " - " + currentEntry.getValue() + ",");
+        }
     }
 
     public static void main(String[] args) {
@@ -52,22 +68,9 @@ public class Main {
         findMaxPrice(goodPriceMap);
         System.out.println(keySet);
         System.out.println(values);
+
         //Task 1
         int[] numberArray = new int[]{1, 3, 5, 7, 7, 8, 4, 2, 3, 3, 4};
-        Map<Integer, Integer> massiveMap = new HashMap<>();
-        int counter = 0;
-        for (int i = 0; i < numberArray.length; i++) {
-            for (int j = 0; j < numberArray.length; j++) {
-                if (numberArray[i] == numberArray[j]) {
-                    counter += 1;
-                }
-            }
-            massiveMap.put(numberArray[i], counter);
-            counter = 0;
-        }
-        Set<Map.Entry<Integer, Integer>> entry = massiveMap.entrySet();
-        for (Map.Entry<Integer, Integer> currentEntry : entry) {
-            System.out.println(currentEntry.getKey() + " " + currentEntry.getValue());
-        }
+        createMapByArray(numberArray);
     }
 }
