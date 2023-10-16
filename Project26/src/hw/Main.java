@@ -1,19 +1,16 @@
 package hw;
 
-import com.sun.source.tree.Tree;
-
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         //Task 3
-        TreeSet<Integer> numSet1 = new TreeSet<>();
+        TreeSet<Integer> numSet1 = new TreeSet<>(Comparator.comparingInt(Integer::intValue).reversed());
         numSet1.add(23);
         numSet1.add(19);
         numSet1.add(30);
         numSet1.add(25);
-        NavigableSet<Integer> navigableSet = (TreeSet)numSet1.descendingSet();
-        System.out.println(navigableSet);
+        System.out.println(numSet1);
 
         //Task 1
         LinkedList<Integer> intLinkedList = new LinkedList<>();
@@ -30,5 +27,21 @@ public class Main {
 
         //Task 2
         TreeSet<Integer> numSet2 = new TreeSet<>();
+        numSet2.add(7);
+        numSet2.add(27);
+        numSet2.add(17);
+        numSet2.add(57);
+        numSet2.add(90);
+        Integer previous = null;
+        int maxInterval = 0;
+        for (Integer current : numSet2) {
+            if(previous != null){
+                if(maxInterval < current - previous){
+                    maxInterval = current - previous;
+                }
+            }
+            previous = current;
+        }
+        System.out.println(maxInterval);
     }
 }
