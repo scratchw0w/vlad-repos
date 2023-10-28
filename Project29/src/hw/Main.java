@@ -1,22 +1,30 @@
 package hw;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-        //Task 2
-//        Map<String, String> contactBook = new HashMap<>();
-//        ContactBook contactBookObj = new ContactBook(contactBook);
-//        contactBookObj.addNewContact();
-//        contactBookObj.addNewContact();
-//        contactBookObj.addNewContact();
-//        contactBookObj.showContactBook();
+//        //Task 2
+//        Contact jane = new Contact("Jane", "123456");
+//        Contact jane1 = new Contact("Jane", "123456");
+//        Contact kate = new Contact("Kate", "7894521");
+//        Contact jack = new Contact("Jack", "1042578");
+//        ContactBookService contactBookService = new ContactBookService();
+//        contactBookService.addNewContact(jack);
+//        contactBookService.addNewContact(jane);
+//        contactBookService.addNewContact(kate);
+//        contactBookService.showContactBook();
+//        contactBookService.removeContact(kate);
+//        contactBookService.showContactBook();
+//        System.out.println(contactBookService.searchContactByName("Jane"));
+//        System.out.println(jane.equals(jane1));
 
         // Task 3
-        List<Book> books = new ArrayList<>();
+        Set<Book> books = new HashSet<>();
         Book book1 = new Book("1984", "G.Orwell", 1948);
         Book book2 = new Book("Animal's farm", "G.Orwell", 1947);
         Book book3 = new Book("Postwar", "T.Dztadt", 2005);
@@ -31,8 +39,10 @@ public class Main {
         library.removeBook(book4);
         library.showLibrary();
         System.out.println(" ");
-//        library.searchBookByName();
-//        library.searchBookByPublishDate();
-        library.searchBookByAuthor();
+        System.out.println(library.searchBookByName("1984"));
+        System.out.println();
+        System.out.println();
+        library.searchBookByPublishDate(2005);
+        library.searchBookByAuthor("G.Orwell");
     }
 }

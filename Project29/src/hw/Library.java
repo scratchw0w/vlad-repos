@@ -1,31 +1,22 @@
 package hw;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Library {
-    private static final Scanner SCANNER = new Scanner(System.in);
-    private List<Book> books = new ArrayList<>();
-
-    public Library(List<Book> books) {
+    private Set<Book> books = new HashSet<>();
+    public Library(Set<Book> books) {
         this.books = books;
     }
 
-    public void setBooks(List<Book> books) {
+    public void setBooks(Set<Book> books) {
         this.books = books;
     }
 
-    public List<Book> getBooks() {
+    public Set<Book> getBooks() {
         return this.books;
     }
 
     public void addBook(Book book) {
-        for (int currentBook = 0; currentBook < this.books.size(); currentBook++) {
-            if (this.books.get(currentBook).getName() == book.getName()) {
-                return;
-            }
-        }
         this.books.add(book);
     }
 
@@ -34,38 +25,34 @@ public class Library {
     }
 
     public void showLibrary() {
-        for (int currentBook = 0; currentBook < this.books.size(); currentBook++) {
-            this.books.get(currentBook).showInfo();
+        for(Book currentBook : this.books){
+            currentBook.showInfo();
         }
     }
 
-    public void searchBookByAuthor() {
-        System.out.println("Input author's name to search book -->");
-        String author = SCANNER.nextLine();
-        for (int currentBook = 0; currentBook < this.books.size(); currentBook++) {
-            if (this.books.get(currentBook).getAuthor() == author) {
-                this.books.get(currentBook).showInfo();
-            }
-        }
-    }
-
-    public void searchBookByName() {
-        System.out.println("Input name of book to search -->");
-        String name = SCANNER.nextLine();
-        for (int currentBook = 0; currentBook < this.books.size(); currentBook++) {
-            if (this.books.get(currentBook).getName() == name) {
-                this.books.get(currentBook).showInfo();
+    public void searchBookByAuthor(String author) {
+        for (Book currentBook : this.books) {
+            if (currentBook.getAuthor().equals(author)) {
+                currentBook.showInfo();
                 return;
             }
         }
     }
 
-    public void searchBookByPublishDate() {
-        System.out.println("Input publish date of book to search -->");
-        int date = SCANNER.nextInt();
-        for (int currentBook = 0; currentBook < this.books.size(); currentBook++) {
-            if (this.books.get(currentBook).getPublishYear() == date) {
-                this.books.get(currentBook).showInfo();
+    public Book searchBookByName(String name) {
+        for (Book currentBook : this.books) {
+            if (currentBook.getName().equals(name)) {
+                return currentBook;
+            }
+        }
+        return null;
+    }
+
+    public void searchBookByPublishDate(int date) {
+        for (Book currentBook : this.books) {
+            if (currentBook.getPublishYear() == date) {
+                currentBook.showInfo();
+                return;
             }
         }
     }

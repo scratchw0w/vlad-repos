@@ -41,4 +41,7 @@ public class Book {
         System.out.println("Publish year: " + this.publishYear);
         System.out.println();
     }
+    public String toString(){
+        return this.author + " " + this.name + " " + this.publishYear;
+    }
 }
