@@ -3,9 +3,10 @@ package hw;
 import java.util.*;
 
 public class Library {
-    private Set<Book> books = new HashSet<>();
-    public Library(Set<Book> books) {
-        this.books = books;
+    private Set<Book> books;
+
+    public Library() {
+        this.books = new HashSet<>();
     }
 
     public void setBooks(Set<Book> books) {
@@ -24,19 +25,18 @@ public class Library {
         this.books.remove(book);
     }
 
-    public void showLibrary() {
-        for(Book currentBook : this.books){
-            currentBook.showInfo();
-        }
+    public Set<Book> showLibrary() {
+        return this.books;
     }
 
-    public void searchBookByAuthor(String author) {
+    public List<Book> searchBookByAuthor(String author) {
+        List<Book> booksWithSameAuthor = new ArrayList<>();
         for (Book currentBook : this.books) {
             if (currentBook.getAuthor().equals(author)) {
-                currentBook.showInfo();
-                return;
+                booksWithSameAuthor.add(currentBook);
             }
         }
+        return booksWithSameAuthor;
     }
 
     public Book searchBookByName(String name) {
@@ -48,12 +48,13 @@ public class Library {
         return null;
     }
 
-    public void searchBookByPublishDate(int date) {
+    public List<Book> searchBookByPublishDate(int date) {
+        List<Book> booksWithSamePublishDate = new ArrayList<>();
         for (Book currentBook : this.books) {
             if (currentBook.getPublishYear() == date) {
-                currentBook.showInfo();
-                return;
+                booksWithSamePublishDate.add(currentBook);
             }
         }
+        return booksWithSamePublishDate;
     }
 }

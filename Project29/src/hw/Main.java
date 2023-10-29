@@ -24,25 +24,24 @@ public class Main {
 //        System.out.println(jane.equals(jane1));
 
         // Task 3
-        Set<Book> books = new HashSet<>();
         Book book1 = new Book("1984", "G.Orwell", 1948);
         Book book2 = new Book("Animal's farm", "G.Orwell", 1947);
         Book book3 = new Book("Postwar", "T.Dztadt", 2005);
         Book book4 = new Book("Caste", "I.Wilkerson", 2020);
 
-        Library library = new Library(books);
+        Library library = new Library();
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
         library.addBook(book4);
-        library.showLibrary();
         library.removeBook(book4);
-        library.showLibrary();
+        System.out.println(library.showLibrary());
         System.out.println(" ");
         System.out.println(library.searchBookByName("1984"));
         System.out.println();
         System.out.println();
-        library.searchBookByPublishDate(2005);
-        library.searchBookByAuthor("G.Orwell");
+        System.out.println(library.searchBookByPublishDate(2005));
+        System.out.println(library.searchBookByAuthor("G.Orwell"));
+        System.out.println();
     }
 }
