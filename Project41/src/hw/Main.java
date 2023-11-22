@@ -13,7 +13,7 @@ public class Main {
 //        stringList.add("width");
 //        stringList.add("computer");
 //        List<String> updatedStringList = stringList.stream()
-//                .map(string -> string.toUpperCase())
+//                .map(String::toUpperCase)
 //                .toList();
 //        System.out.println(updatedStringList);
 //        //Task 2
@@ -25,9 +25,10 @@ public class Main {
 //        nameList.add("Frank");
 //        nameList.add("Alan");
 //        nameList.add("Alan");
-//        nameList.stream().distinct()
+//        nameList.stream()
+//                .distinct()
 //                .forEach(System.out::println);
-//        //Task 3
+        //Task 3
 //        System.out.println("--------------------------Task 3 --------------------------------");
 //        List<Integer> numberList = new ArrayList<>();
 //        for (int i = 0; i < 5; i++) {
@@ -37,21 +38,21 @@ public class Main {
 //        }
 //        System.out.println(numberList.stream()
 //                .mapToInt(number -> number)
-//                .average().orElse(0));
-//        //Task 4
+//                .average()
+//                .orElse(0));
+        //Task 4
         System.out.println("--------------------------Task 4 --------------------------------");
         List<String> newStringList = new ArrayList<>();
         newStringList.add("sqrt");
         newStringList.add("");
         newStringList.add("joiks");
         newStringList.add("maths");
-        try {
-            System.out.println(newStringList.stream()
-                    .filter(string -> string == " " || string == "")
-                    .findFirst().get());
+        Optional<String> optionalString = newStringList.stream()
+                .filter(string -> string.equals(" ") || string.isEmpty())
+                .findFirst();
+        if (optionalString.isPresent()) {
             System.out.println("Space/s is/are detected");
-        }
-        catch (NoSuchElementException exception){
+        } else {
             System.out.println("There are no spaces");
         }
         //Task 5
