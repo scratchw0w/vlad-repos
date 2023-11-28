@@ -1,3 +1,5 @@
+package hw;
+
 public class Task {
     private String description;
     private boolean isCompleted;
@@ -13,8 +15,8 @@ public class Task {
         return this.isCompleted;
     }
 
-    public void setCompleted(boolean isCompleted) {
-        this.isCompleted = isCompleted;
+    public void setCompleted() {
+        this.isCompleted = true;
     }
 
     public String getDescription() {
@@ -34,9 +36,9 @@ public class Task {
     }
 
     public void showInfo() {
-        System.out.println("Task description: " + this.description);
-        System.out.println("Task priority: " + this.priority);
-        System.out.println("Task status: " + this.isCompleted);
+        System.out.println("hw.Task description: " + this.description);
+        System.out.println("hw.Task priority: " + this.priority);
+        System.out.println("hw.Task status: " + this.isCompleted);
         System.out.println();
     }
 }

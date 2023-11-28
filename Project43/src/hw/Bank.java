@@ -1,9 +1,12 @@
+package hw;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
     private List<Account> accountList;
-    public Bank(){
+
+    public Bank() {
         this.accountList = new ArrayList<>();
     }
 
@@ -15,27 +18,29 @@ public class Bank {
         this.accountList = accountList;
     }
 
-    public void transferMoney(Account accountDonor, Account accountGetter, float sentMoney){
-        try{
-            if (accountDonor.getBalance() < sentMoney) throw new RunOutOfCashException("Run out of cash");
-            accountDonor.withdraw(sentMoney);
-            accountGetter.deposit(sentMoney);
+    public void transferMoney(Account accountDonor, Account accountGetter, float amountOfMoney) {
+        if (amountOfMoney <= 0) {
+            throw new IllegalArgumentException("Amount of money is not valid");
         }
-        catch (RunOutOfCashException runOutOfCashException){
+
+        try {
+            accountDonor.withdraw(amountOfMoney);
+            accountGetter.deposit(amountOfMoney);
+        } catch (RunOutOfCashException runOutOfCashException) {
             System.out.println("Too small balance");
             System.out.println("-------------------------------------------------");
         }
     }
 
-    public void addAccount(Account account){
+    public void addAccount(Account account) {
         this.accountList.add(account);
     }
 
-    public void removeAccount(Account account){
+    public void removeAccount(Account account) {
         this.accountList.remove(account);
     }
 
-    public void showInfo(){
+    public void showInfo() {
         this.accountList.stream()
                 .forEach(account -> account.showInfo());
     }

@@ -1,3 +1,7 @@
+package hw;
+
+import static hw.Util.RUN_OUT_OF_CASH_EXCEPTION_MESSAGE;
+
 public class Account {
     private float balance;
     private String name;
@@ -19,17 +23,18 @@ public class Account {
         this.name = name;
     }
 
-    public String withdraw(float withdrawMoney) {
-            this.balance -= withdrawMoney;
-            return "Your current balance is " + getBalance();
+    public float withdraw(float withdrawMoney) throws RunOutOfCashException {
+        if (this.balance < withdrawMoney) throw new RunOutOfCashException(RUN_OUT_OF_CASH_EXCEPTION_MESSAGE + this.name);
+        this.balance -= withdrawMoney;
+        return this.balance;
     }
 
-    public String deposit(float depositingMoney) {
+    public float deposit(float depositingMoney) {
         this.balance += depositingMoney;
-        return "Your current balance is " + getBalance();
+        return this.balance;
     }
 
-    public void showInfo(){
+    public void showInfo() {
         System.out.println("The name of account is " + getName());
         System.out.println("Your current balance is " + getBalance());
         System.out.println();

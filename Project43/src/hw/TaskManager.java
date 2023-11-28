@@ -1,3 +1,5 @@
+package hw;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,20 +26,19 @@ public class TaskManager {
         this.taskList.remove(task);
     }
 
-    public void setTaskAsCompleted(Task task) {
-        for(Task currentTask: this.taskList){
-            if(currentTask == task){
-                currentTask.setCompleted(true);
-                return;
-            }
-        }
+    public boolean setTaskAsCompleted(Task task) {
+        return this.taskList.stream()
+                .filter(currentTask -> currentTask.equals(task))
+                .peek(Task::setCompleted)
+                .findAny()
+                .isPresent();
     }
 
-    public void setAllTasksAsCompleted(){
-        this.taskList.forEach(task -> task.setCompleted(true));
+    public void setAllTasksAsCompleted() {
+        this.taskList.forEach(Task::setCompleted);
     }
 
-    public void showInfo(){
+    public void showInfo() {
         this.taskList.forEach(Task::showInfo);
     }
 }
