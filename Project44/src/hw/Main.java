@@ -34,12 +34,14 @@ public class Main {
         System.out.println();
 
         inventory.addProductToInventory(laptop);
+        inventory.addProductToInventory(iphone);
+        inventory.addProductToInventory(motherboard);
         inventory.addProductToInventory(cpu);
         inventory.showAllInventory();
         System.out.println();
-        inventory.sortByPrice();
-        System.out.println();
-        laptop.isSold();
+
+        store.addSoldProduct(laptop);
         inventory.showSoldGoods();
+
     }
 }
