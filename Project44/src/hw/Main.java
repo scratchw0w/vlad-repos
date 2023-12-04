@@ -1,5 +1,11 @@
 package hw;
 
+import hw.shop.Inventory;
+import hw.shop.Product;
+import hw.shop.Store;
+import hw.university.Student;
+import hw.university.University;
+
 public class Main {
     public static void main(String[] args) {
 //        //Task 1
@@ -13,25 +19,25 @@ public class Main {
 //        university.addStudent(student1);
 //        university.addStudent(student2);
 //        university.addStudent(student3);
+//        university.addStudent(student4);
 //
 //        university.showAllStudents();
 //        System.out.println();
-//        university.sortByAverageMark();
+//        university.showByAverageMark(3);
 //        System.out.println();
-//        university.sortByAge();
+//        university.showByAge(18);
         //Task 2
-        Product laptop = new Product("Acer", 1254673, 1, 25000);
-        Product iphone = new Product("15 pro", 78520, 2, 7500);
-        Product motherboard = new Product("ATX", 1125468, 3, 1200);
-        Product cpu = new Product("Intel", 7841256, 4, 1500);
+        Product laptop = new Product("Acer", 1254673, 25000);
+        Product iphone = new Product("15 pro", 78520, 7500);
+        Product motherboard = new Product("ATX", 1125468, 1200);
+        Product cpu = new Product("Intel", 7841256, 1500);
         Inventory inventory = new Inventory();
         Store store = new Store();
 
-        laptop.showInfo();
-        iphone.showInfo();
-        motherboard.showInfo();
-        cpu.showInfo();
-        System.out.println();
+        System.out.println(laptop);
+        System.out.println(iphone);
+        System.out.println(motherboard);
+        System.out.println(cpu);
 
         inventory.addProductToInventory(laptop);
         inventory.addProductToInventory(iphone);

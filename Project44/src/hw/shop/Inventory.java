@@ -1,25 +1,17 @@
-package hw;
+package hw.shop;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Inventory {
-    List<Product> inventoryList;
+    private List<Product> inventoryList;
 
     public Inventory() {
         this.inventoryList = new ArrayList<>();
     }
 
-    public void setInventoryList(List<Product> inventoryList) {
-        this.inventoryList = inventoryList;
-    }
-
-    public List<Product> getInventoryList() {
-        return this.inventoryList;
-    }
-
     public void addProductToInventory(Product product) {
-        if (product.isInStore() == false) {
+        if (!product.isInStore()) {
             product.setInStore();
         }
         this.inventoryList.add(product);
@@ -31,17 +23,18 @@ public class Inventory {
     }
 
     public void showAllInventory() {
-        this.inventoryList.forEach(product -> product.showInfo());
+        this.inventoryList.forEach(System.out::println);
     }
 
-    public void sortByPrice(){
-        this.inventoryList.stream()
+    public void sortByPrice() {
+        this.inventoryList.stream()                               // Вынести в аргументы
                 .filter(product -> product.getPrice() >= 10000)
-                .forEach(product -> product.showInfo());
+                .forEach(System.out::println);
     }
-    public void showSoldGoods(){
+
+    public void showSoldGoods() {                                 // Вынести в аргументы
         this.inventoryList.stream()
                 .filter(product -> product.isSold() == true)
-                .forEach(product -> product.showInfo());
+                .forEach(System.out::println);
     }
 }
