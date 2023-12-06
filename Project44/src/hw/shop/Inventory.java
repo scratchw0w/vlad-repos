@@ -1,40 +1,39 @@
 package hw.shop;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Inventory {
-    private List<Product> inventoryList;
+    private final Map<Product, Integer> inventory = new HashMap<>();
 
-    public Inventory() {
-        this.inventoryList = new ArrayList<>();
+    public void addProduct(Product product, int amount) {
+        int amountOfProduct = inventory.getOrDefault(product, 0);
+
+        inventory.put(product, amountOfProduct + amount);
     }
 
-    public void addProductToInventory(Product product) {
-        if (!product.isInStore()) {
-            product.setInStore();
+    public void removeProduct(Product product, int amount) {
+        int amountOfProduct = inventory.getOrDefault(product, 0);
+        if (amountOfProduct < amount) {
+            System.out.println("There is not enough product to be removed");
+            return;
         }
-        this.inventoryList.add(product);
+
+        int resultAmount = amountOfProduct - amount;
+
+        if (resultAmount == 0) {
+            inventory.remove(product);
+        } else {
+            inventory.put(product, resultAmount);
+        }
     }
 
-    public void removeProductFromInventory(Product product) {
-        this.inventoryList.remove(product);
-        product.getOfStore();
+    public boolean isAvailable(Product product) {
+        return inventory.containsKey(product);
     }
 
-    public void showAllInventory() {
-        this.inventoryList.forEach(System.out::println);
-    }
-
-    public void sortByPrice() {
-        this.inventoryList.stream()                               // Вынести в аргументы
-                .filter(product -> product.getPrice() >= 10000)
-                .forEach(System.out::println);
-    }
-
-    public void showSoldGoods() {                                 // Вынести в аргументы
-        this.inventoryList.stream()
-                .filter(product -> product.isSold() == true)
-                .forEach(System.out::println);
+    @Override
+    public String toString() {
+        return this.inventory + "";
     }
 }

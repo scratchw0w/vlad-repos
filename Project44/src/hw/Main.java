@@ -3,12 +3,10 @@ package hw;
 import hw.shop.Inventory;
 import hw.shop.Product;
 import hw.shop.Store;
-import hw.university.Student;
-import hw.university.University;
 
 public class Main {
     public static void main(String[] args) {
-//        //Task 1
+        //Task 1
 //        Student student1 = new Student("Frank", 18, 3);
 //        Student student2 = new Student("Anna", 19, 4);
 //        Student student3 = new Student("Kate", 20, 2);
@@ -26,28 +24,40 @@ public class Main {
 //        university.showByAverageMark(3);
 //        System.out.println();
 //        university.showByAge(18);
+//
         //Task 2
         Product laptop = new Product("Acer", 1254673, 25000);
         Product iphone = new Product("15 pro", 78520, 7500);
         Product motherboard = new Product("ATX", 1125468, 1200);
         Product cpu = new Product("Intel", 7841256, 1500);
+
         Inventory inventory = new Inventory();
-        Store store = new Store();
+        inventory.addProduct(laptop, 2);
+        inventory.addProduct(iphone, 1);
+        inventory.addProduct(motherboard, 4);
+        inventory.addProduct(cpu, 1);
 
-        System.out.println(laptop);
-        System.out.println(iphone);
-        System.out.println(motherboard);
-        System.out.println(cpu);
+        System.out.println(inventory);
 
-        inventory.addProductToInventory(laptop);
-        inventory.addProductToInventory(iphone);
-        inventory.addProductToInventory(motherboard);
-        inventory.addProductToInventory(cpu);
-        inventory.showAllInventory();
-        System.out.println();
+        Store store = new Store(inventory);
+        System.out.println(store.checkAvailability(laptop) ? "is present" : "is not present");
+        store.buyProduct(laptop);
+        store.buyProduct(iphone);
 
-        store.addSoldProduct(laptop);
-        inventory.showSoldGoods();
+        System.out.println(inventory);
 
+        store.buyProduct(iphone);
+        store.buyProduct(laptop);
+        store.buyProduct(cpu);
+        store.buyProduct(motherboard);
+
+        System.out.println(inventory);
+
+        store.buyProduct(iphone);
+        store.buyProduct(laptop);
+        store.buyProduct(cpu);
+        store.buyProduct(motherboard);
+
+        System.out.println(inventory);
     }
 }

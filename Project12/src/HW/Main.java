@@ -11,5 +11,7 @@ public class Main {
             allInstruments[i].play();
             allInstruments[i].stopPlaying();
         }
+
+        String str = "Hello";
     }
 }

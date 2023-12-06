@@ -1,25 +1,23 @@
 package hw.shop;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Store {
-    private List<Product> storeList;
+    private final Inventory inventory;
 
-    public Store() {
-        this.storeList = new ArrayList<>();
+    public Store(Inventory inventory) {
+        this.inventory = inventory;
     }
 
-    public void addSoldProduct(Product product) {
-        if (!product.isSold()) {
-            product.setSold();
+    public void buyProduct(Product product) {
+        if (!checkAvailability(product)) {
+            System.out.println("Product is not available");
+            return;
         }
-        this.storeList.add(product);
-        product.getOfStore();
+
+        inventory.removeProduct(product, 1);
+        System.out.println("Product successfully purchased");
     }
 
-    public void showAllSoldGoods() {
-        this.storeList
-                .forEach(System.out::println);
+    public boolean checkAvailability(Product product) {
+        return inventory.isAvailable(product);
     }
 }
